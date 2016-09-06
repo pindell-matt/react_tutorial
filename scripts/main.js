@@ -1,13 +1,13 @@
-let React = require('react');
-let ReactDOM = require('react-dom');
+var React = require('react');
+var ReactDOM = require('react-dom');
 
 // App: <App/>
-let App = React.createClass({
-  render : () => {
+var App = React.createClass({
+  render : function() {
     return (
       <div className='catch-of-the-day'>
         <div className='menu'>
-          <Header />
+          <Header tagline='Fresh Seafood Market' />
         </div>
         <Order />
         <Inventory />
@@ -17,17 +17,27 @@ let App = React.createClass({
 });
 
 // Header: <Header/>
-let Header = React.createClass({
-  render : () => {
+var Header = React.createClass({
+  render : function() {
     return (
-      <p>Header</p>
+      <header className='top'>
+        <h1>Catch
+          <span className='ofThe'>
+            <span className='of'>of</span>
+            <span className='the'>the</span>
+          </span>
+        Day</h1>
+        <h3 className='tagline'>
+          <span>{this.props.tagline}</span>
+        </h3>
+      </header>
     )
   }
 });
 
 // Order: <Order/>
-let Order = React.createClass({
-  render : () => {
+var Order = React.createClass({
+  render : function() {
     return (
       <p>Order</p>
     )
@@ -35,8 +45,8 @@ let Order = React.createClass({
 });
 
 // Inventory: <Inventory/>
-let Inventory = React.createClass({
-  render : () => {
+var Inventory = React.createClass({
+  render : function() {
     return (
       <p>Inventory</p>
     )
@@ -44,8 +54,8 @@ let Inventory = React.createClass({
 });
 
 // StorePicker: <StorePicker/>
-let StorePicker = React.createClass({
-  render : () => {
+var StorePicker = React.createClass({
+  render : function() {
     return (
       <form className='store-selector'>
         <h2>Please Enter A Store</h2>

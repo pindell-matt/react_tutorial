@@ -12,6 +12,19 @@ var helpers = require('./helpers');
 
 // App: <App/>
 var App = React.createClass({
+  getInitialState : function() {
+    return {
+      fishes : {},
+      order : {}
+    }
+  },
+  addFish : function(fish) {
+    var timestamp = (new Date()).getTime();
+    // update state obj
+    this.state.fishes['fish-' + timestamp] = fish;
+    // set state
+    this.setState({ fishes : this.state.fishes });
+  },
   render : function() {
     return (
       <div className='catch-of-the-day'>
@@ -19,7 +32,7 @@ var App = React.createClass({
           <Header tagline='Fresh Seafood Market' />
         </div>
         <Order />
-        <Inventory />
+        <Inventory addFish={this.addFish} />
       </div>
     )
   }
@@ -40,6 +53,7 @@ var AddFishForm = React.createClass({
       image : this.refs.image.value
     }
     // Add fish to App State
+    this.props.addFish(fish);
   },
   render : function() {
     return (
@@ -92,7 +106,7 @@ var Inventory = React.createClass({
     return (
       <div>
         <h2>Inventory</h2>
-        <AddFishForm/>
+        <AddFishForm {...this.props} />
       </div>
     )
   }

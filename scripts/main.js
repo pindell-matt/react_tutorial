@@ -54,6 +54,8 @@ var AddFishForm = React.createClass({
     }
     // Add fish to App State
     this.props.addFish(fish);
+    // Clear out content of form
+    this.refs.fishForm.reset();
   },
   render : function() {
     return (
